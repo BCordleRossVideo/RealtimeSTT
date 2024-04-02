@@ -29,7 +29,7 @@ if __name__ == '__main__':
             # Send the message
             s.sendall(message.encode())
 
-    def send_text(text, url="http://10.10.80.101:3000/transcript"):
+    def send_text(text, url="http://localhost:3000/transcript"):
         payload = {'text': text}
 
         try:
