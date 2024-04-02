@@ -1,0 +1,6 @@
+.vscode
+realtimestt.venv
+__pycache__
+Installers
+logs
+*.log

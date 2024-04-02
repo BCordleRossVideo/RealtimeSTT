@@ -47,16 +47,16 @@ import os
 import re
 import gc
 
-INIT_MODEL_TRANSCRIPTION = "tiny"
-INIT_MODEL_TRANSCRIPTION_REALTIME = "tiny"
-INIT_REALTIME_PROCESSING_PAUSE = 0.2
+INIT_MODEL_TRANSCRIPTION = "tiny.en"
+INIT_MODEL_TRANSCRIPTION_REALTIME = "tiny.en"
+INIT_REALTIME_PROCESSING_PAUSE = 0.1
 INIT_SILERO_SENSITIVITY = 0.4
 INIT_WEBRTC_SENSITIVITY = 3
-INIT_POST_SPEECH_SILENCE_DURATION = 0.6
+INIT_POST_SPEECH_SILENCE_DURATION = 0.2
 INIT_MIN_LENGTH_OF_RECORDING = 0.5
 INIT_MIN_GAP_BETWEEN_RECORDINGS = 0
 INIT_WAKE_WORDS_SENSITIVITY = 0.6
-INIT_PRE_RECORDING_BUFFER_DURATION = 1.0
+INIT_PRE_RECORDING_BUFFER_DURATION = 0.5
 INIT_WAKE_WORD_ACTIVATION_DELAY = 0.0
 INIT_WAKE_WORD_TIMEOUT = 5.0
 ALLOWED_LATENCY_LIMIT = 10
@@ -80,15 +80,15 @@ class AudioToTextRecorder:
 
     def __init__(self,
                  model: str = INIT_MODEL_TRANSCRIPTION,
-                 language: str = "",
+                 language: str = "English",
                  compute_type: str = "default",
                  input_device_index: int = 0,
                  gpu_device_index: Union[int, List[int]] = 0,
                  on_recording_start=None,
                  on_recording_stop=None,
                  on_transcription_start=None,
-                 ensure_sentence_starting_uppercase=True,
-                 ensure_sentence_ends_with_period=True,
+                 ensure_sentence_starting_uppercase=False,
+                 ensure_sentence_ends_with_period=False,
                  use_microphone=True,
                  spinner=True,
                  level=logging.WARNING,
@@ -131,7 +131,7 @@ class AudioToTextRecorder:
                  on_wakeword_detection_start=None,
                  on_wakeword_detection_end=None,
                  on_recorded_chunk=None,
-                 debug_mode=False,
+                 debug_mode=True,
                  handle_buffer_overflow: bool = INIT_HANDLE_BUFFER_OVERFLOW,
                  ):
         """
