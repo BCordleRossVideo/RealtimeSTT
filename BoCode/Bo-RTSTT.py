@@ -29,7 +29,7 @@ if __name__ == '__main__':
             # Send the message
             s.sendall(message.encode())
 
-    def send_text(text, url="http://localhost:3000/transcript"):
+    def send_text(text, url="http://10.10.80.101:3000/transcript"):
         payload = {'text': text}
 
         try:
@@ -79,15 +79,16 @@ if __name__ == '__main__':
 
     recorder_config = {
         'spinner': False,
-        'model': 'large-v2',
+        'model': 'distil-medium.en',
         'language': 'en',
         'silero_sensitivity': 0.4,
+        'silero_use_onnx': True,
         'webrtc_sensitivity': 2,
-        'post_speech_silence_duration': 0.1,
+        'post_speech_silence_duration': 0,
         'min_length_of_recording': 0,
         'min_gap_between_recordings': 0,
         'enable_realtime_transcription': True,
-        'realtime_processing_pause': 0.1,
+        'realtime_processing_pause': 0,
         'realtime_model_type': 'distil-medium.en',
         'on_realtime_transcription_update': text_detected, 
         #'on_realtime_transcription_stabilized': text_detected,

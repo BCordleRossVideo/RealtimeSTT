@@ -52,7 +52,7 @@ INIT_MODEL_TRANSCRIPTION_REALTIME = "tiny.en"
 INIT_REALTIME_PROCESSING_PAUSE = 0.1
 INIT_SILERO_SENSITIVITY = 0.4
 INIT_WEBRTC_SENSITIVITY = 3
-INIT_POST_SPEECH_SILENCE_DURATION = 0.2
+INIT_POST_SPEECH_SILENCE_DURATION = 0.1
 INIT_MIN_LENGTH_OF_RECORDING = 0.5
 INIT_MIN_GAP_BETWEEN_RECORDINGS = 0
 INIT_WAKE_WORDS_SENSITIVITY = 0.6
@@ -81,7 +81,7 @@ class AudioToTextRecorder:
     def __init__(self,
                  model: str = INIT_MODEL_TRANSCRIPTION,
                  language: str = "English",
-                 compute_type: str = "default",
+                 compute_type: str = "fb16",
                  input_device_index: int = 0,
                  gpu_device_index: Union[int, List[int]] = 0,
                  on_recording_start=None,
