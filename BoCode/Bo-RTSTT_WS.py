@@ -101,8 +101,8 @@ if __name__ == '__main__':
         'min_gap_between_recordings': 0,
         'enable_realtime_transcription': True,
         'realtime_processing_pause': 0,
-        'realtime_model_type': 'distil-medium.en',
-        'on_realtime_transcription_update': text_detected, 
+        'realtime_model_type': 'distil-small.en',
+        'on_realtime_transcription_update': text_detected,
         'level' : 'WARNING'
         #'on_realtime_transcription_stabilized': text_detected,
     }
