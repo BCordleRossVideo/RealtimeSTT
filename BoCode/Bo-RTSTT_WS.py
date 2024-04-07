@@ -16,6 +16,7 @@ if __name__ == '__main__':
 
     full_sentences = []
     displayed_text = ""
+    initial_prompt = "Let's direct a television show with a lot of numbered cameras. XPression 1, XPression 2, Font 1, Font 2, CG 1, CG 2, are all graphics computer sources that can be used with the video cameras."
 
     def clear_console():
         os.system('clear' if os.name == 'posix' else 'cls')
