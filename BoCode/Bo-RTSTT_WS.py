@@ -21,38 +21,28 @@ if __name__ == '__main__':
     def clear_console():
         os.system('clear' if os.name == 'posix' else 'cls')
     
-    def send_rosstalk(ip, port, message):
-        # Add /r/n to the message to comply with the specified format
-        message += '\r\n'
+    # def send_rosstalk(ip, port, message):
+    #     # Add /r/n to the message to comply with the specified format
+    #     message += '\r\n'
         
-        # Create a socket object
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            # Connect to the server
-            s.connect((ip, port))
+    #     # Create a socket object
+    #     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    #         # Connect to the server
+    #         s.connect((ip, port))
             
-            # Send the message
-            s.sendall(message.encode())
-
-    def send_text(text, url="http://10.10.80.101:3000/transcript"):
-        payload = {'text': text}
-
-        try:
-            response = requests.post(url, json=payload)
-            if response.status_code == 200:
-                print("Text sent successfully.")
-                return response.json()
-            else:
-                print(f"Failed to send text. Status code: {response.status_code}")
-        except requests.exceptions.RequestException as e:
-            print(f"An error occurred.{e}")
-
+    #         # Send the message
+    #         s.sendall(message.encode())
 
     async def send_text_via_websocket(text, uri="ws://10.10.80.101:3000"):
-        async with websockets.connect(uri) as websocket:
-            payload = json.dumps({'text': text})
-            await websocket.send(payload)
-            response = await websocket.recv()
-            print(f"Response from server: {response}", flush=True)
+        try:
+            async with websockets.connect(uri) as websocket:
+                payload = json.dumps({'text': text})
+                await websocket.send(payload)
+                response = await websocket.recv()
+                print(f"Response from server: {response}", flush=True)
+        except (websockets.exceptions.WebSocketException, OSError) as e:
+            print(f"An error occurred while sending text via websocket: {e}", flush=True)
+
 
     def text_detected(text):
         global displayed_text
@@ -68,20 +58,6 @@ if __name__ == '__main__':
             clear_console()
             print(displayed_text, flush=True)
 
-    # def text_detected(text):
-    #     global displayed_text
-    #     clear_console()
-    #     print(text)
-        # sentences_with_style = [
-        #     f"{Fore.YELLOW + sentence + Style.RESET_ALL if i % 2 == 0 else Fore.CYAN + sentence + Style.RESET_ALL} "
-        #     for i, sentence in enumerate(full_sentences)
-        # ]
-        # new_text = "".join(sentences_with_style).strip() + " " + text if len(sentences_with_style) > 0 else text
-
-        # if new_text != displayed_text:
-        #     displayed_text = new_text
-        #     clear_console()
-        #     print(displayed_text, end="", flush=True)
 
     def process_text(text):
         asyncio.run(send_text_via_websocket(text))
