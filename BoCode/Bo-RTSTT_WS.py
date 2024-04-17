@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     full_sentences = []
     displayed_text = ""
-    initial_prompt = "Let's direct a television show with a lot of numbered cameras. XPression 1, XPression 2, Font 1, Font 2, CG 1, CG 2, are all graphics computer sources that can be used with the video cameras."
+    initial_prompt = "Ready 1, take 1. ready 2, take 2. Ready XPression 1, Take XPression 1. Take. Ready 3, effect 3. Ready 16, take 16. Preview 4. Take 4. Standby font. Font in. Ready 99, dissolve. Ready blue, take blue. Ready red, take red. Ready X, roll X, dissolve. Ready Y, roll Y, dissolve. "
 
     def clear_console():
         os.system('clear' if os.name == 'posix' else 'cls')
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
     recorder_config = {
         'spinner': False,
-        'model': 'distil-medium.en',
+        'model': 'tiny.en',
         'language': 'en',
         'silero_sensitivity': 0.4,
         'silero_use_onnx': True,
@@ -78,9 +78,13 @@ if __name__ == '__main__':
         'min_gap_between_recordings': 0,
         'enable_realtime_transcription': True,
         'realtime_processing_pause': 0,
-        'realtime_model_type': 'distil-small.en',
+        'realtime_model_type': 'tiny.en',
         'on_realtime_transcription_update': text_detected,
-        'level' : 'WARNING'
+        'level' : 'WARNING',
+        'debug_mode': False,
+        'beam_size_realtime': 3,
+        'initial_prompt': initial_prompt,
+        # 'suppress_tokens': [-1],
         #'on_realtime_transcription_stabilized': text_detected,
     }
 
