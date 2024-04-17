@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     full_sentences = []
     displayed_text = ""
-    initial_prompt = "Ready 1, take 1. ready 2, take 2. Ready XPression 1, Take XPression 1. Take. Ready 3, effect 3. Ready 16, take 16. Preview 4. Take 4. Standby font. Font in. Ready 99, dissolve. Ready blue, take blue. Ready red, take red. Ready X, roll X, dissolve. Ready Y, roll Y, dissolve. "
+    initial_prompt = "Ready 1, take 1. ready 2, take 2. Ready XPression 1, Take XPression 1. Take. Ready 3, effect 3. Ready 16, take 16. Preview 4. Take 4. Standby font. Font in. Ready 99, dissolve. Ready blue, take blue. Ready red, take red. Ready X, roll X, dissolve. Ready Y, roll Y, dissolve. XPression. Ross Carbonite. Ross Video."
 
     def clear_console():
         os.system('clear' if os.name == 'posix' else 'cls')
