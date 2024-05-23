@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     full_sentences = []
     displayed_text = ""
-    initial_prompt = "Ready 1, take 1. ready 2, take 2. Ready XPression 1, Take XPression 1. Take. Ready 3, effect 3. Ready 16, take 16. Preview 4. Take 4. Standby font. Font in. Ready 99, dissolve. Ready blue, take blue. Ready red, take red. Ready X, roll X, dissolve. Ready Y, roll Y, dissolve. XPression. Ross Carbonite. Ross Video."
+    initial_prompt = "preview camera 1. preview camera 1?. take camera 1. preview camera 2. ready to?. ready too.. standby to?. set to?. preview to?. ready to.. standby to.. set to. preview to. take camera 2. take to?. switch to?. cut to?. preview camera 3. take camera 3. ready split. standby split. set split. preview split. readysplit. pretty split. preview 2-box. take split. go split. takesplit. take camera 2-box. ready black. standby black. set black. preview black. black on the line. take black. take.. cut.. take it. cut it. take!. fade.. dissolve.. fade it. fade up. fade to black. with font. ready font 1. ready xpression 1. font in. xpression in. graphic in. lower third in. expression in. fawn in. fun in. fontin. font out. clear font. xpression out. expression out. clear expression. graphic out. clear it. fawn out. clearfont. fun out. ready me. take me. show me the multiviewer. multiviewer full screen. multiviewer fullscreen. show me the multi viewer. show me the multi-viewer. bring me back fullscreen.. bring me back full screen. route me full screen. bring me full screen. bring me fullscreen. dashboard fullscreen. dashboard full screen. on an effect. set effect. ready effect. take effect.. do it.. effect it. 2-box with 1 left 2 right. camera 2 on the right. 2-box 1 left to right. 2-box 1 left 2 right. 2-box with 1 left to right. 2-box with 1 left to right. split with 1 left 2 right. split with 1 left to right. 2-box with 1 left 3 right. 2-box 1 left 3 right. split with 1 left 3 right. take."
 
     def clear_console():
         os.system('clear' if os.name == 'posix' else 'cls')
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     #         # Send the message
     #         s.sendall(message.encode())
 
-    async def send_text_via_websocket(text, uri="ws://10.10.80.101:3000"):
+    async def send_text_via_websocket(text, uri="ws://127.0.0.1:3000"):
         try:
             async with websockets.connect(uri) as websocket:
                 payload = json.dumps({'text': text})
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         'language': 'en',
         'silero_sensitivity': 0.4,
         'silero_use_onnx': True,
-        'webrtc_sensitivity': 2,
+        'webrtc_sensitivity': 3,
         'post_speech_silence_duration': 0,
         'min_length_of_recording': 0,
         'min_gap_between_recordings': 0,
