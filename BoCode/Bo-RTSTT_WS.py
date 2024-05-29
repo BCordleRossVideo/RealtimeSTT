@@ -33,7 +33,7 @@ if __name__ == '__main__':
     #         # Send the message
     #         s.sendall(message.encode())
 
-    async def send_text_via_websocket(text, uri="ws://10.10.80.101:3000"):
+    async def send_text_via_websocket(text, uri="ws://127.0.0.1:3000"):
         try:
             async with websockets.connect(uri) as websocket:
                 payload = json.dumps({'text': text})
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         'language': 'en',
         'silero_sensitivity': 0.3,
         'silero_use_onnx': True,
-        'webrtc_sensitivity': 2,
+        'webrtc_sensitivity': 3,
         'post_speech_silence_duration': 0,
         'min_length_of_recording': 0,
         'min_gap_between_recordings': 0,
