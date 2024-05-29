@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     full_sentences = []
     displayed_text = ""
-    initial_prompt = "Ready 1, take 1. ready 2, take 2. Ready XPression 1, Take XPression 1. Take. Ready 3, effect 3. Ready 16, take 16. Preview 4. Take 4. Standby font. Font in. Ready 99, dissolve. Ready blue, take blue. Ready red, take red. Ready X, roll X, dissolve. Ready Y, roll Y, dissolve. XPression. Ross Carbonite. Ross Video."
+    initial_prompt = "Hey Carbonite. Ready 1, Take 1. Effect 1. Ready Camera. Take Camera. Ready Cam. Take Cam. Ready 2, Take 2. Effect 2. Ready XPression 1, Take XPression 1. Take. Ready 3, effect 3. effect camera 3. Ready 16, take 16. Preview 4. Take 4. Standby font. Ready Font 1. Standby Font 1. With Font 1. Font 1 in. Font in. Ready 99, Dissolve. Ready Blue, Take Blue. Effect Blue. Roll blue, dissolve. Ready Red, Take Red. Effect Red. Roll Red, dissolve. Roll x, dissolve. Ross y, Dissolve. Cue. Cue 2-Box. Cue split screen. Ready X, Roll X, Dissolve Y, Effect Y. Ready Y, Roll Y, Dissolve Y, Effect Y. Sequence In. Cue Sequence. Take Item. Fire Take Item. Dissolve. XPression. Ross Carbonite. Ross Video. 2-Box, 1 left, 3 right. 2-Box, 1 left, 2 right. GPI 1001. Ready Black. Fade to black. Take Black. Do it."
 
     def clear_console():
         os.system('clear' if os.name == 'posix' else 'cls')
@@ -70,7 +70,7 @@ if __name__ == '__main__':
         'spinner': False,
         'model': 'tiny.en',
         'language': 'en',
-        'silero_sensitivity': 0.4,
+        'silero_sensitivity': 0.3,
         'silero_use_onnx': True,
         'webrtc_sensitivity': 2,
         'post_speech_silence_duration': 0,
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         'realtime_model_type': 'tiny.en',
         'on_realtime_transcription_update': text_detected,
         'level' : 'WARNING',
-        'debug_mode': False,
+        'debug_mode': True,
         'beam_size_realtime': 3,
         'initial_prompt': initial_prompt,
         # 'suppress_tokens': [-1],
