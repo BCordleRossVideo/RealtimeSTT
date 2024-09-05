@@ -72,3 +72,4 @@ sudo apt-get install libcudnn8-dev
 It works!!
 
 sudo apt update && sudo apt install ffmpeg
+

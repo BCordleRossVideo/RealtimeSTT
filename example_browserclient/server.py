@@ -31,17 +31,18 @@ if __name__ == '__main__':
     recorder_config = {
         'spinner': False,
         'use_microphone': False,
-        'model': 'large-v2',
+        'model': 'tiny.en',
         'language': 'en',
         'silero_sensitivity': 0.4,
         'webrtc_sensitivity': 2,
-        'post_speech_silence_duration': 0.7,
+        'post_speech_silence_duration': 0.2,
         'min_length_of_recording': 0,
-        'min_gap_between_recordings': 0,
+        'min_gap_between_recordings': 0.01,
         'enable_realtime_transcription': True,
         'realtime_processing_pause': 0,
         'realtime_model_type': 'tiny.en',
-        'on_realtime_transcription_stabilized': text_detected,
+        'on_realtime_transcription_stabilized': text_detected,        
+        'beam_size_realtime': 3,
     }
 
     def recorder_thread():

@@ -7,6 +7,7 @@ import requests # type: ignore
 import asyncio
 import websockets
 import json
+import torch
 
 if __name__ == '__main__':
 
@@ -16,7 +17,8 @@ if __name__ == '__main__':
 
     full_sentences = []
     displayed_text = ""
-    initial_prompt = "path to 270. road to 270. top 5 closest races. race to 270. 5 closest races. vote margin. outstanding vote. vote difference. vote difference for Alabama. vote margin for Alabama. vote difference for Alaska. vote margin for Georgia. vote difference for Georgia. outstanding vote for Wisconsin. outstanding vote for Michigan. outstanding vote for Georgia. vote difference for Michigan. vote margin for Michigan.vote difference for Arizona. vote margin for Arizona. outstanding vote for Pennsylvania."
+    #initial_prompt = "path to 270. road to 270. top 5 closest races. race to 270. 5 closest races. vote margin. outstanding vote. vote difference. vote difference for Alabama. vote margin for Alabama. vote difference for Alaska. vote margin for Georgia. vote difference for Georgia. outstanding vote for Wisconsin. outstanding vote for Michigan. outstanding vote for Georgia. vote difference for Michigan. vote margin for Michigan.vote difference for Arizona. vote margin for Arizona. outstanding vote for Pennsylvania."
+    initial_prompt = "Arizona. Maricopa. Pima. Pinal. Coconino. Georgia. Fulton. Gwinnett. DeKalb. Taliaferro. Michigan. Wayne. Oakland. Macomb. Keweenaw. Minnesota. Hennepin. Ramsey. Mahnomen. Nevada. Clark. Washoe. North Carolina. Mecklenburg. Guilford. Tyrrell. Pennsylvania. Philadelphia. Allegheny. Montgomery. Wisconsin. Milwaukee. Waukesha. Menominee. Vote Difference. Vote Margin. Outstanding Vote. Top Five Closest Races. Race to two-seventy. Path to 270. Election data in US States & Counties."
 
     def clear_console():
         os.system('clear' if os.name == 'posix' else 'cls')
@@ -82,7 +84,7 @@ if __name__ == '__main__':
         'on_realtime_transcription_update': text_detected,
         'level' : 'WARNING',
         'debug_mode': False,
-        'beam_size_realtime': 5,
+        'beam_size_realtime': 3,
         'initial_prompt': initial_prompt,
         # 'suppress_tokens': [-1],
         #'on_realtime_transcription_stabilized': text_detected,
@@ -91,6 +93,15 @@ if __name__ == '__main__':
     recorder = AudioToTextRecorder(**recorder_config)
 
     clear_console()
+    if torch.cuda.is_available():
+        print("GPU is available.")
+        print(f"PyTorch version: {torch.__version__}")
+        print(f"CUDA available: {torch.cuda.is_available()}")
+        print(f"CUDA version: {torch.version.cuda}")
+        print(f"cuDNN version: {torch.backends.cudnn.version()}")
+        print(f"GPU device name: {torch.cuda.get_device_name(0)}")
+    else:
+        print("GPU is NOT available.")
     print("Say something...", end="", flush=True)
 
     while True:
