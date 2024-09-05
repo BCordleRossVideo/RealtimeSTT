@@ -4,3 +4,4 @@ __pycache__
 Installers
 logs
 *.log
+example_app/test_env/*
